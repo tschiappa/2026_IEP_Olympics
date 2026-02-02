@@ -59,8 +59,8 @@ function calculateScores(picks, medals, payments) {
         const countries = [];
         let totalPoints = 0;
 
-        // Get all country columns (Country1 through Country7)
-        for (let i = 1; i <= 7; i++) {
+        // Get all country columns (Country1 through Country6)
+        for (let i = 1; i <= 6; i++) {
             const country = pick[`Country${i}`];
             if (country) {
                 const points = countryPoints[country.toLowerCase()] || 0;
@@ -69,10 +69,14 @@ function calculateScores(picks, medals, payments) {
             }
         }
 
+        // Get tiebreaker value
+        const tiebreaker = parseInt(pick.Tiebreaker) || 0;
+
         return {
             name,
             countries,
             totalPoints,
+            tiebreaker,
             paid: paidStatus[name.toLowerCase()] !== false // Default to paid if not in list
         };
     });
@@ -100,6 +104,7 @@ function renderLeaderboard(scores) {
                     <th>Rank</th>
                     <th>Name</th>
                     <th>Points</th>
+                    <th>🇨🇦 Tiebreaker</th>
                     <th>Countries</th>
                 </tr>
             </thead>
@@ -129,6 +134,7 @@ function renderLeaderboard(scores) {
                 <td class="rank ${rankClass}">${rankDisplay}</td>
                 <td>${score.name}${!score.paid ? ' <span class="unpaid-label">(Not Paid)</span>' : ''}</td>
                 <td class="points">${score.totalPoints}</td>
+                <td class="tiebreaker">${score.tiebreaker}</td>
                 <td class="countries-list">${countriesHtml}</td>
             </tr>
         `;

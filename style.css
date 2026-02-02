@@ -54,7 +54,7 @@ h2 {
 
 /* Main content */
 main {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     display: grid;
     gap: 30px;
@@ -114,6 +114,12 @@ section {
     font-weight: bold;
     font-size: 1.2rem;
     color: #FCB131;
+}
+
+.tiebreaker {
+    font-weight: bold;
+    color: #EE334E;
+    text-align: center;
 }
 
 .countries-list {
@@ -236,6 +242,10 @@ footer p {
 }
 
 .not-paid .points {
+    color: #FF8A8A;
+}
+
+.not-paid .tiebreaker {
     color: #FF8A8A;
 }
 
