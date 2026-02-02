@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+/* Olympic Rings */
+.olympic-rings {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.ring {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid;
+    display: inline-block;
+}
+
+.ring.blue { border-color: #0081C8; }
+.ring.yellow { border-color: #FCB131; margin-top: 20px; }
+.ring.black { border-color: #000000; }
+.ring.green { border-color: #00A651; margin-top: 20px; }
+.ring.red { border-color: #EE334E; }
+
+/* Main content */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 30px;
+}
+
+section {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.loading {
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    padding: 20px;
+}
+
+/* Leaderboard Table */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.leaderboard-table th {
+    background: rgba(0,0,0,0.2);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.leaderboard-table tr:nth-child(even) {
+    background: rgba(255,255,255,0.05);
+}
+
+.leaderboard-table tr:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.rank {
+    font-weight: bold;
+    width: 50px;
+}
+
+.rank-1 { color: #FFD700; }
+.rank-2 { color: #C0C0C0; }
+.rank-3 { color: #CD7F32; }
+
+.points {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #FCB131;
+}
+
+.countries-list {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 300px;
+}
+
+.country-score {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin: 2px;
+    font-size: 0.8rem;
+}
+
+.country-score.has-points {
+    background: rgba(252, 177, 49, 0.3);
+}
+
+/* Medal Table */
+.medal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.medal-table th,
+.medal-table td {
+    padding: 10px 12px;
+    text-align: center;
+}
+
+.medal-table th {
+    background: rgba(0,0,0,0.2);
+    font-weight: 600;
+}
+
+.medal-table td:first-child,
+.medal-table th:first-child {
+    text-align: left;
+}
+
+.medal-table tr:nth-child(even) {
+    background: rgba(255,255,255,0.05);
+}
+
+.gold { color: #FFD700; }
+.silver { color: #C0C0C0; }
+.bronze { color: #CD7F32; }
+
+.medal-total {
+    font-weight: bold;
+    color: #FCB131;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .ring {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+    }
+
+    .ring.yellow,
+    .ring.green {
+        margin-top: 15px;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .countries-list {
+        display: none;
+    }
+
+    .medal-table th,
+    .medal-table td {
+        padding: 8px 6px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Error state */
+.error {
+    color: #EE334E;
+    text-align: center;
+    padding: 20px;
+}

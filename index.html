@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic Pool Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="olympic-rings">
+            <span class="ring blue"></span>
+            <span class="ring yellow"></span>
+            <span class="ring black"></span>
+            <span class="ring green"></span>
+            <span class="ring red"></span>
+        </div>
+        <h1>Olympic Pool Leaderboard</h1>
+    </header>
+
+    <main>
+        <section id="leaderboard">
+            <h2>Standings</h2>
+            <div id="leaderboard-container">
+                <p class="loading">Loading leaderboard...</p>
+            </div>
+        </section>
+
+        <section id="medal-table">
+            <h2>Medal Count</h2>
+            <div id="medal-container">
+                <p class="loading">Loading medals...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Scoring: Gold = 3pts | Silver = 2pts | Bronze = 1pt</p>
+        <p>Last updated: <span id="last-updated">-</span></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
