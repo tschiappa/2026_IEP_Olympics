@@ -211,7 +211,7 @@ footer p {
     }
 
     .countries-list {
-        display: none;
+        font-size: 0.7rem;
     }
 
     .medal-table th,
