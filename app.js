@@ -40,11 +40,17 @@ function calculateCountryPoints(medals) {
 }
 
 // Calculate scores for all participants
-function calculateScores(picks, medals) {
+function calculateScores(picks, medals, payments) {
     // Create a map of country -> points
     const countryPoints = {};
     medals.forEach(m => {
         countryPoints[m.Country.toLowerCase()] = calculateCountryPoints(m);
+    });
+
+    // Create a map of name -> paid status
+    const paidStatus = {};
+    payments.forEach(p => {
+        paidStatus[p.Name.toLowerCase()] = p.Paid.toLowerCase() === 'yes';
     });
 
     // Calculate each person's score
@@ -66,14 +72,16 @@ function calculateScores(picks, medals) {
         return {
             name,
             countries,
-            totalPoints
+            totalPoints,
+            paid: paidStatus[name.toLowerCase()] !== false // Default to paid if not in list
         };
     });
 
-    // Sort by total points (descending)
-    scores.sort((a, b) => b.totalPoints - a.totalPoints);
+    // Sort: paid people by points (descending), then unpaid people by points (descending)
+    const paidScores = scores.filter(s => s.paid).sort((a, b) => b.totalPoints - a.totalPoints);
+    const unpaidScores = scores.filter(s => !s.paid).sort((a, b) => b.totalPoints - a.totalPoints);
 
-    return scores;
+    return [...paidScores, ...unpaidScores];
 }
 
 // Render the leaderboard
@@ -98,18 +106,28 @@ function renderLeaderboard(scores) {
             <tbody>
     `;
 
-    scores.forEach((score, index) => {
-        const rank = index + 1;
-        const rankClass = rank <= 3 ? `rank-${rank}` : '';
+    // Track rank separately for paid participants only
+    let paidRank = 0;
+
+    scores.forEach((score) => {
+        const unpaidClass = score.paid ? '' : 'not-paid';
+        let rankDisplay = '-';
+        let rankClass = '';
+
+        if (score.paid) {
+            paidRank++;
+            rankDisplay = paidRank;
+            rankClass = paidRank <= 3 ? `rank-${paidRank}` : '';
+        }
 
         const countriesHtml = score.countries
             .map(c => `<span class="country-score ${c.points > 0 ? 'has-points' : ''}">${c.name}: ${c.points}</span>`)
             .join(' ');
 
         html += `
-            <tr>
-                <td class="rank ${rankClass}">${rank}</td>
-                <td>${score.name}</td>
+            <tr class="${unpaidClass}">
+                <td class="rank ${rankClass}">${rankDisplay}</td>
+                <td>${score.name}${!score.paid ? ' <span class="unpaid-label">(Not Paid)</span>' : ''}</td>
                 <td class="points">${score.totalPoints}</td>
                 <td class="countries-list">${countriesHtml}</td>
             </tr>
@@ -180,14 +198,15 @@ function updateTimestamp() {
 // Main initialization
 async function init() {
     try {
-        // Fetch both CSV files
-        const [picks, medals] = await Promise.all([
+        // Fetch all CSV files
+        const [picks, medals, payments] = await Promise.all([
             fetchCSV('picks.csv'),
-            fetchCSV('medals.csv')
+            fetchCSV('medals.csv'),
+            fetchCSV('payments.csv')
         ]);
 
         // Calculate and render leaderboard
-        const scores = calculateScores(picks, medals);
+        const scores = calculateScores(picks, medals, payments);
         renderLeaderboard(scores);
 
         // Render medal table

@@ -221,6 +221,32 @@ footer p {
     }
 }
 
+/* Not paid styling */
+.not-paid {
+    opacity: 0.6;
+}
+
+.not-paid td {
+    text-decoration: line-through;
+    color: #EE334E;
+}
+
+.not-paid .rank {
+    color: #EE334E;
+}
+
+.not-paid .points {
+    color: #EE334E;
+}
+
+.unpaid-label {
+    font-size: 0.75rem;
+    color: #EE334E;
+    font-weight: normal;
+    text-decoration: none;
+    display: inline-block;
+}
+
 /* Error state */
 .error {
     color: #EE334E;
