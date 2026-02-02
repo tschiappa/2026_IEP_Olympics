@@ -1,5 +1,8 @@
-Name,Country1,Country2,Country3,Country4,Country5,Country6,Country7
-John,USA,Canada,Norway,Germany,Switzerland,Austria,Sweden
-Jane,Norway,Sweden,Finland,Canada,USA,France,Japan
-Mike,France,Italy,Netherlands,Australia,China,South Korea,Spain
-Sarah,Germany,Austria,Switzerland,Norway,Sweden,USA,Canada
+Name,Country1,Country2,Country3,Country4,Country5,Country6,Tiebreaker
+Mike,China,Norway,Netherlands,Germany,Sweden,Canada,12
+Pamela,Germany,China,Canada,Netherlands,Sweden,Norway,5
+Tim,Norway,Germany,Canada,France,Switzerland,Finland,9
+Danielle,Norway,Germany,Canada,Switzerland,Netherlands,South Korea,12
+Melanie,Norway,Austria,Germany,Canada,Switzerland,,9
+Joe,Germany,Canada,Italy,Switzerland,France,Japan,23
+Andrew,Norway,Germany,China,Japan,Switzerland,Netherlands,8
