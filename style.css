@@ -221,30 +221,43 @@ footer p {
     }
 }
 
-/* Not paid styling */
+/* Not paid styling - using bright coral for accessibility on dark background */
 .not-paid {
-    opacity: 0.6;
+    background: rgba(255, 107, 107, 0.15);
 }
 
 .not-paid td {
     text-decoration: line-through;
-    color: #EE334E;
+    color: #FF8A8A;
 }
 
 .not-paid .rank {
-    color: #EE334E;
+    color: #FF8A8A;
 }
 
 .not-paid .points {
-    color: #EE334E;
+    color: #FF8A8A;
+}
+
+.not-paid .countries-list {
+    color: #FF8A8A;
+}
+
+.not-paid .country-score {
+    color: #FF8A8A;
+    background: rgba(255, 138, 138, 0.2);
 }
 
 .unpaid-label {
     font-size: 0.75rem;
-    color: #EE334E;
-    font-weight: normal;
+    color: #FFAAAA;
+    font-weight: 600;
     text-decoration: none;
     display: inline-block;
+    background: rgba(255, 100, 100, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
 }
 
 /* Error state */
