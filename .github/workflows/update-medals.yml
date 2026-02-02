@@ -1,0 +1,43 @@
+name: Update Medal Counts
+
+on:
+  # Run every hour during Olympics (Feb 6 - Feb 22, 2026)
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  update-medals:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Run medal scraper
+        run: python scripts/update_medals.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet data/medals.csv || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changed
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/medals.csv
+          git commit -m "Auto-update medal counts [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push
