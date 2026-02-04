@@ -104,7 +104,7 @@ function renderLeaderboard(scores) {
                     <th>Rank</th>
                     <th>Name</th>
                     <th>Points</th>
-                    <th>🇨🇦 Tiebreaker</th>
+                    <th>Tiebreaker (Canada Medals)</th>
                     <th>Countries</th>
                 </tr>
             </thead>
@@ -112,7 +112,10 @@ function renderLeaderboard(scores) {
     `;
 
     // Track rank separately for paid participants only
-    let paidRank = 0;
+    // Participants with the same points share the same rank
+    let paidIndex = 0;
+    let currentRank = 0;
+    let lastPoints = null;
 
     scores.forEach((score) => {
         const unpaidClass = score.paid ? '' : 'not-paid';
@@ -120,9 +123,13 @@ function renderLeaderboard(scores) {
         let rankClass = '';
 
         if (score.paid) {
-            paidRank++;
-            rankDisplay = paidRank;
-            rankClass = paidRank <= 3 ? `rank-${paidRank}` : '';
+            paidIndex++;
+            if (score.totalPoints !== lastPoints) {
+                currentRank = paidIndex;
+                lastPoints = score.totalPoints;
+            }
+            rankDisplay = currentRank;
+            rankClass = currentRank <= 3 ? `rank-${currentRank}` : '';
         }
 
         const countriesHtml = score.countries
