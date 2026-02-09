@@ -1,11 +1,16 @@
 Country,Gold,Silver,Bronze
-Norway,0,0,0
-USA,0,0,0
-Canada,0,0,0
-Germany,0,0,0
-Sweden,0,0,0
-France,0,0,0
-Switzerland,0,0,0
-Austria,0,0,0
-Finland,0,0,0
-Japan,0,0,0
+Norway,3,1,2
+USA,2,0,0
+Italy,1,2,6
+Japan,1,2,1
+Austria,1,2,0
+Germany,1,1,1
+Czech Republic,1,1,0
+France,1,1,0
+Sweden,1,1,0
+Switzerland,1,0,0
+Slovenia,0,1,0
+South Korea,0,1,0
+Bulgaria,0,0,1
+Canada,0,0,1
+China,0,0,1
