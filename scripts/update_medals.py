@@ -66,6 +66,7 @@ def fetch_medal_table():
             "url": WIKI_URL,
             "formats": ["markdown"],
             "onlyMainContent": True,
+            "maxAge": 1,  # force fresh scrape, don't use Firecrawl cache
         },
     )
     response.raise_for_status()
