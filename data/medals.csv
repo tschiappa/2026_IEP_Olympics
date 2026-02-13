@@ -1,21 +1,21 @@
 Country,Gold,Silver,Bronze
-Norway,7,2,4
-Italy,5,2,7
-USA,4,6,3
+Norway,8,3,7
+Italy,6,3,9
+USA,4,7,3
+France,4,5,1
+Germany,4,3,2
 Sweden,4,3,1
 Switzerland,4,1,2
-Austria,3,5,3
-France,3,4,1
-Germany,3,3,2
-Japan,2,2,5
-Netherlands,1,2,0
-Czech Republic,1,1,0
+Austria,3,6,3
+Netherlands,3,3,0
+Japan,2,2,6
+Australia,2,0,0
+Czech Republic,1,2,0
+South Korea,1,1,2
 Slovenia,1,1,0
-Australia,1,0,0
-Canada,0,3,3
-China,0,1,2
+Canada,0,3,4
+China,0,2,2
 New Zealand,0,1,1
-South Korea,0,1,1
 Latvia,0,1,0
 Poland,0,1,0
 Bulgaria,0,0,2
